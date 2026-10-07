@@ -1,0 +1,40 @@
+# Car Sales Marketplace
+
+An online marketplace where private sellers and dealers list used vehicles and buyers search, contact sellers and reserve a vehicle with a deposit. Operates in the EU.
+
+## Functional requirements
+FR-01: Buyers can search listings by free text and filter by make, model, year, price range, mileage, fuel type, body type, distance from a postcode and seller type, with the number of matching listings shown next to every filter value.
+FR-02: Buyers can open a listing page with up to 40 photos, an optional 360-degree walk-around video and the full vehicle specification.
+FR-03: Private sellers and dealers can create, edit, pause and delete their listings.
+FR-04: Listing attributes depend on the vehicle category: cars, motorcycles, vans, trucks and caravans each have their own fields (for example payload for vans, number of berths for caravans), and administrators can add categories and fields without a code release.
+FR-05: Sellers upload photos and videos; the platform generates thumbnails and web-optimised versions automatically.
+FR-06: Buyers can save a search and receive an email or push notification when a new matching listing is published.
+FR-07: Buyers can message a seller through in-platform chat; the conversation history is kept per listing.
+FR-08: A buyer can reserve a vehicle by paying a refundable deposit by card; the listing is then shown as reserved for 48 hours.
+FR-09: If the seller cancels, or the reservation expires without a sale, the deposit is refunded automatically.
+FR-10: Dealers can bulk-import and update their inventory from a CSV file or through a REST API feed.
+FR-11: The platform checks each listing's VIN with an external vehicle-history provider and shows a summary of the report on the listing.
+FR-12: Buyers can request a financing quote from partner lenders directly from the listing page.
+FR-13: Buyers and sellers register and sign in with email and password, or with a Google or Apple account.
+FR-14: Buyers can review a dealer after a completed purchase.
+FR-15: Moderators review listings flagged by users and can suspend a listing or an account.
+FR-16: Dealers have a dashboard showing views, saves and enquiries per listing per day.
+FR-17: Administrators can view and export the complete history of every deposit payment and refund.
+FR-18: When a seller creates a listing, the platform suggests a price range based on comparable vehicles sold on the platform.
+FR-19: Users can download a copy of all personal data the platform holds about them.
+FR-20: Users can delete their account, after which the platform erases their personal data.
+
+## Non-functional requirements
+NFR-01: Search results, including the per-filter counts, are returned within 300 ms at the 95th percentile over at least 2 million active listings.
+NFR-02: The platform stores at least 40 TB of photos and video, growing by about 1 TB per month.
+NFR-03: Listing photos load within 1 second for users anywhere in Europe.
+NFR-04: Deposit payments and refunds are atomic: a deposit is never captured without the listing being reserved, and is never refunded twice.
+NFR-05: Every deposit payment, refund and reservation status change is kept in an immutable audit trail for 7 years.
+NFR-06: Card data never touches the platform's servers; card payments are processed by a PCI DSS compliant payment provider.
+NFR-07: When an account is deleted, the user's personal data is erased from every store, including search indexes, media storage, chat history, caches and backups, within 30 days (GDPR Article 17). Payment records needed for the audit trail are kept but pseudonymised.
+NFR-08: The platform supports 5,000 concurrent users and peaks of 300 search requests per second.
+NFR-09: Search and listing pages are available 99.9% of each month.
+NFR-10: All personal data is stored and processed inside the EU.
+NFR-11: Saved-search notifications are delivered within 5 minutes of a matching listing being published.
+NFR-12: A dealer feed of up to 10,000 listings is processed within 15 minutes without slowing down search for buyers.
+NFR-13: Dealer dashboard statistics may be up to 1 hour old.

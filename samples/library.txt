@@ -1,0 +1,21 @@
+# Library Management System
+
+A city library with 12 branches wants one system for its catalogue, loans and members.
+
+## Functional requirements
+FR-01: Members can search the catalogue by title, author, subject or ISBN.
+FR-02: Members can see whether a copy is available at each branch.
+FR-03: Members can place a hold on a book that is currently on loan.
+FR-04: Librarians check books out and in by scanning the member card and the book barcode.
+FR-05: Members can renew a loan online up to two times.
+FR-06: The system emails members three days before a due date and again when a loan is overdue.
+FR-07: Librarians can add, edit and withdraw books and individual copies.
+FR-08: The system calculates overdue fines, and members can pay them online by card.
+FR-09: Librarians can register new members and suspend existing ones.
+FR-10: Administrators can see a monthly report of loans per branch.
+
+## Non-functional requirements
+NFR-01: Catalogue search responds within 1 second with 200 concurrent users.
+NFR-02: All 12 branches are served by a single central installation.
+NFR-03: A member's personal data is visible only to staff of the member's home branch and to administrators.
+NFR-04: Card payments are handled by an external payment provider; the library never stores card numbers.
