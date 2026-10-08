@@ -4,17 +4,25 @@ The LLM returns exactly this shape (via ADK structured output). Field descriptio
 the model as part of the response schema, so they double as instructions.
 """
 
-from typing import Literal
+from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, BeforeValidator, Field
+
+
+def _legacy_kind(value: Any) -> Any:
+    """Runs saved before the rename say "container"; they mean "component"."""
+    return "component" if value == "container" else value
 
 
 class Element(BaseModel):
     id: str = Field(description='Lowercase slug, unique in the model, e.g. "listing-api".')
     name: str = Field(description="Human-readable name shown in the diagram.")
-    kind: Literal["person", "system", "container", "datastore", "external"] = Field(
+    kind: Annotated[
+        Literal["person", "system", "component", "datastore", "external"],
+        BeforeValidator(_legacy_kind),
+    ] = Field(
         description=(
-            "person = a user role; container = a deployable unit of this system "
+            "person = a user role; component = a deployable unit of this system "
             "(app, API, worker); datastore = a database, cache, index or object store "
             "of this system; external = a third-party system; system = another system "
             "owned by the same organisation."
@@ -109,7 +117,7 @@ class Obligation(BaseModel):
     ]
     statement: str = Field(
         description=(
-            "A concrete design obligation a reviewer can check on a container diagram, e.g. "
+            "A concrete design obligation a reviewer can check on a component diagram, e.g. "
             '"Every store holding personal data has a path that erases it on account deletion."'
         )
     )

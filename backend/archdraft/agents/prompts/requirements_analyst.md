@@ -19,7 +19,7 @@ List each distinct kind of data the system must keep. For each one, write what d
 
 ## 4. Design obligations (the most important part)
 
-Turn the requirements into concrete obligations that a reviewer can check by looking at a container diagram: boxes (apps, services, workers, datastores, external systems) and the arrows between them. Each obligation must be specific enough that someone could point at the diagram and say "met" or "missing".
+Turn the requirements into concrete obligations that a reviewer can check by looking at a component diagram: boxes (apps, services, workers, datastores, external systems) and the arrows between them. Each obligation must be specific enough that someone could point at the diagram and say "met" or "missing".
 
 Good obligations:
 - "Every store that holds personal data has a component with a write path to it that erases the user's data on account deletion." (from a GDPR erasure requirement)

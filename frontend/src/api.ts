@@ -1,7 +1,7 @@
 // Types mirror backend/archdraft/schema.py and service.py.
 
 export type Mode = "pipeline" | "single_agent" | "baseline";
-export type ElementKind = "person" | "system" | "container" | "datastore" | "external";
+export type ElementKind = "person" | "system" | "component" | "datastore" | "external";
 
 export interface ArchElement {
   id: string;

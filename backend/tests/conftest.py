@@ -62,7 +62,7 @@ def library_model() -> ArchitectureModel:
                 {
                     "id": "web-app",
                     "name": "Web App",
-                    "kind": "container",
+                    "kind": "component",
                     "technology": "React",
                     "responsibility": "UI for members and librarians.",
                     "satisfies": ["FR-01", "FR-02", "FR-03"],
@@ -71,7 +71,7 @@ def library_model() -> ArchitectureModel:
                 {
                     "id": "library-api",
                     "name": "Library API",
-                    "kind": "container",
+                    "kind": "component",
                     "technology": "FastAPI",
                     "responsibility": "Catalogue and loan logic.",
                     "satisfies": ["FR-01", "FR-02", "FR-03", "FR-04", "NFR-01"],

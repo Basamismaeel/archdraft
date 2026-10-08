@@ -17,7 +17,7 @@ MAX_EDGE_LABEL = 42
 SHAPES: dict[str, tuple[str, str]] = {
     "person": ('(["', '"])'),
     "system": ('[["', '"]]'),
-    "container": ('["', '"]'),
+    "component": ('["', '"]'),
     "datastore": ('[("', '")]'),
     "external": ('["', '"]'),
 }
@@ -25,7 +25,7 @@ SHAPES: dict[str, tuple[str, str]] = {
 CLASS_DEFS = [
     "classDef person fill:#ffffff,stroke:#444444,stroke-width:1px",
     "classDef system fill:#ffffff,stroke:#444444,stroke-width:1px",
-    "classDef container fill:#ffffff,stroke:#444444,stroke-width:1px",
+    "classDef component fill:#ffffff,stroke:#444444,stroke-width:1px",
     "classDef datastore fill:#f4f4f4,stroke:#444444,stroke-width:1px",
     "classDef external fill:#ffffff,stroke:#999999,stroke-width:1px,"
     "stroke-dasharray:4 3,color:#555555",
@@ -33,7 +33,7 @@ CLASS_DEFS = [
 ]
 FLAGGED_LINK_STYLE = "stroke:#c0392b,stroke-width:2px,stroke-dasharray:5 3"
 
-INSIDE_BOUNDARY = {"container", "datastore"}
+INSIDE_BOUNDARY = {"component", "datastore"}
 
 
 def escape_label(text: str) -> str:

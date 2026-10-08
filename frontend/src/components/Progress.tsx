@@ -6,7 +6,7 @@ const NODE_LABELS: Record<string, string | null> = {
   prepare_input: "Read requirements",
   requirements_analyst: "Analyst agent: data classes, design obligations, open questions",
   build_architect_request: null,
-  requirements_to_architecture: "Architect agent: designs the containers and data flows",
+  requirements_to_architecture: "Architect agent: designs the components and data flows",
   validate_architecture: "Validator: 11 deterministic rules",
   build_repair_request: "Validator found errors: sent back to the architect",
   build_review_request: null,

@@ -329,7 +329,7 @@ def build_requirements_to_architecture(model: str | BaseLlm) -> Agent:
         name=ARCHITECT_NAME,
         model=with_retries(model),
         retry_config=NODE_RETRY,
-        description="Designs a traceable C4 container model that meets the obligations.",
+        description="Designs a traceable component model that meets the obligations.",
         instruction=_prompt(ARCHITECT_NAME),
         output_schema=ArchitectureModel,
         output_key=STATE_ARCHITECTURE,

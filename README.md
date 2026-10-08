@@ -84,7 +84,7 @@ Every run is saved to `data/` and can be reopened from **Previous runs**. That i
 requirements
   -> prepare_input                        (code)
   -> requirements_analyst                 (Gemini)  data classes, design obligations, open questions
-  -> requirements_to_architecture         (Gemini)  containers, stores, flows, one fulfilment per obligation
+  -> requirements_to_architecture         (Gemini)  components, stores, flows, one fulfilment per obligation
   -> validate_architecture                (code)    11 rules
        REPAIR (once per round) ----------> back to the architect with the errors
        REVIEW -> architecture_critic      (Gemini)  met / partial / missing per obligation, findings
@@ -231,5 +231,5 @@ The test suite covers every validation rule and the Mermaid renderer against han
 - **Free-tier quota:** the free Gemini tier allows 20 requests per model per day (checked 2026-10-06). One v2 run uses 3–7 requests, so expect 3–5 full runs per model per day. A full `evaluate.py` run needs a paid tier, or several days.
 - The full pipeline makes 3–7 model calls and takes 1–4 minutes. On the free Gemini tier, busy periods return "503 high demand"; ArchDraft retries and falls back to the models in `GEMINI_FALLBACK_MODEL`, but it cannot generate while every model is overloaded. Saved runs can always be reopened.
 - Baseline counts (elements, IDs, datastores) are read from free-text Mermaid by keyword and ID matching.
-- Containers only (C4 level 2). There are no component or deployment views yet.
+- One level of detail: the deployable components, stores and external systems (what C4 calls the container level, named "component" here). There are no finer-grained or deployment views yet.
 - No authentication, database, Docker, CI or diagram editing. These are out of scope by design.

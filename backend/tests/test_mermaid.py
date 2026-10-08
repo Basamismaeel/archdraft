@@ -23,7 +23,7 @@ def test_shapes_follow_element_kind(model: ArchitectureModel) -> None:
     assert 'n_web_app["<b>Web App</b>' in source
 
 
-def test_containers_and_datastores_sit_inside_the_system_boundary(model: ArchitectureModel) -> None:
+def test_components_and_datastores_sit_inside_the_system_boundary(model: ArchitectureModel) -> None:
     lines = to_mermaid(model).splitlines()
     start = lines.index('  subgraph boundary["Library System"]')
     end = lines.index("  end")
@@ -74,7 +74,7 @@ def test_node_ids_are_safe_and_unique(model: ArchitectureModel) -> None:
         Element(
             id="web_app",
             name="Clash",
-            kind="container",
+            kind="component",
             technology=None,
             responsibility="r",
             satisfies=["FR-01"],
@@ -85,7 +85,7 @@ def test_node_ids_are_safe_and_unique(model: ArchitectureModel) -> None:
         Element(
             id="end",
             name="Keyword",
-            kind="container",
+            kind="component",
             technology=None,
             responsibility="r",
             satisfies=["FR-01"],

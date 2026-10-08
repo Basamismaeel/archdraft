@@ -49,7 +49,7 @@ def test_rule2_single_element_is_not_isolated() -> None:
             Element(
                 id="app",
                 name="App",
-                kind="container",
+                kind="component",
                 technology=None,
                 responsibility="r",
                 satisfies=["FR-01"],
@@ -197,7 +197,7 @@ def test_rule11_blanket_citation_is_a_warning(model: ArchitectureModel) -> None:
             Element(
                 id=f"svc-{i}",
                 name=f"Svc {i}",
-                kind="container",
+                kind="component",
                 technology=None,
                 responsibility="r",
                 satisfies=["NFR-02"],
@@ -209,3 +209,20 @@ def test_rule11_blanket_citation_is_a_warning(model: ArchitectureModel) -> None:
     warnings = [e for e in validate_model(model) if e.rule == "blanket_citation"]
     assert [w.requirement_id for w in warnings] == ["NFR-02"]
     assert warnings[0].severity == "warning"
+
+
+def test_runs_saved_before_the_rename_still_load() -> None:
+    old = Element.model_validate(
+        {
+            "id": "api",
+            "name": "API",
+            "kind": "container",
+            "technology": None,
+            "responsibility": "r",
+            "satisfies": ["FR-01"],
+            "confidence": 1,
+        }
+    )
+    assert old.kind == "component"
+    kinds = Element.model_json_schema()["properties"]["kind"]["enum"]
+    assert "component" in kinds and "container" not in kinds
